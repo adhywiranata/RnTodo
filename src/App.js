@@ -6,7 +6,7 @@ import {
 import {
   LoginContainer,
   RegisterContainer
-} from './components/Auth'
+} from './components/AuthContainer'
 
 class App extends Component {
 
