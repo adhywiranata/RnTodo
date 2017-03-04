@@ -12,7 +12,10 @@ import trashImage from './delete.png';
 
 const ActiveTodoItem = props => (
   <View style={styles.todoItem}>
-    <TouchableHighlight style={styles.trashImageButton}>
+    <TouchableHighlight
+      onPress={() => props.deleteTask(props.id)}
+      style={styles.trashImageButton}
+    >
       <Image source={trashImage} style={styles.trashImage} />
     </TouchableHighlight>
     <TextInput

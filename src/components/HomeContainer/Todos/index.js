@@ -26,6 +26,7 @@ class Todos extends Component {
     this.completeTask = this.completeTask.bind(this);
     this.selectTask = this.selectTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   componentDidMount() {
@@ -65,11 +66,11 @@ class Todos extends Component {
   completeTask(todoId) {
     let currTodos = [...this.state.todos];
     const currTodosId = currTodos.map(todo => todo.id);
-    const deletedTodoId = currTodosId.indexOf(todoId);
-    currTodos.splice(deletedTodoId, 1);
+    const updatedTodoId = currTodosId.indexOf(todoId);
+    currTodos[updatedTodoId].completed = true;
     this.setState({
       todos: currTodos,
-    });
+    })
   }
 
   updateTask(todoId, todoTask) {
@@ -80,6 +81,16 @@ class Todos extends Component {
     this.setState({
       todos: currTodos,
     })
+  }
+
+  deleteTask(todoId) {
+    let currTodos = [...this.state.todos];
+    const currTodosId = currTodos.map(todo => todo.id);
+    const deletedTodoId = currTodosId.indexOf(todoId);
+    currTodos.splice(deletedTodoId, 1);
+    this.setState({
+      todos: currTodos,
+    });
   }
 
   render() {
@@ -106,6 +117,7 @@ class Todos extends Component {
                 <ActiveTodoItem
                   key={todo.id}
                   updateTask={this.updateTask}
+                  deleteTask={this.deleteTask}
                   completeTask={this.completeTask}
                   {...todo}
                 />
