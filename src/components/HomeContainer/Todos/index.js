@@ -17,7 +17,7 @@ class Todos extends Component {
     super(props);
     this.state = {
       todos: [],
-      loading: '',
+      loading: 'Loading',
     };
     this.completeTask = this.completeTask.bind(this);
   }
@@ -27,7 +27,7 @@ class Todos extends Component {
       this.setState({
         loading: 'Loading...',
       });
-    }, 1000);
+    }, 500);
 
     setTimeout(() => {
       this.setState({
@@ -47,7 +47,7 @@ class Todos extends Component {
           { id: 13, todoTask: 'Learn Laravel', completed: false },
         ],
       });
-    }, 2000);
+    }, 3000);
   }
 
   completeTask(todoId) {
@@ -62,7 +62,7 @@ class Todos extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView style={styles.container}>
         { this.state.todos.length === 0 ? (
             <View style={{ alignItems: 'center'}}>
               <Image source={logo} style={{width: 100, height: 100, marginTop: 50}} />
@@ -87,6 +87,10 @@ class Todos extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#F5F5F5',
+    height: 1000,
+  },
   todoLoading: {
     fontSize: 35,
     textAlign: 'center',

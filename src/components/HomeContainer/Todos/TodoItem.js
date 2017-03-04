@@ -36,14 +36,14 @@ const styles = StyleSheet.create({
   checkImageButton: {
     position: 'absolute',
     right: 20,
-    top: 20,
-    width: 40,
-    height: 40,
+    top: 10,
+    width: 60,
+    height: 60,
     padding: 0,
   },
   checkImage: {
-    width: 40,
-    height: 40,
+    width: 60,
+    height: 60,
   }
 });
 
