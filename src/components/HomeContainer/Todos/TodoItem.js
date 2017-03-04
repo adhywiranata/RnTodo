@@ -11,7 +11,10 @@ import checkImage from './success.png';
 
 const TodoItem = props => (
   <View style={styles.todoItem}>
-    <TouchableHighlight onPress={() => props.selectTask(props.id)} style={styles.todoItemTask}>
+    <TouchableHighlight
+      onPress={() => props.selectTask(props.id)}
+      style={styles.todoItemTask}
+      underlayColor='#FFFFFF'>
       <Text style={styles.todoItemTaskText}>{props.todoTask}</Text>
     </TouchableHighlight>
     <TouchableHighlight onPress={() => props.completeTask(props.id)} style={styles.checkImageButton}>

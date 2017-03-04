@@ -60,7 +60,7 @@ class App extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={{ name: 'Home', title: 'Home' }}
+        initialRoute={{ name: 'Login', title: 'Login' }}
         renderScene={ this.renderScene }
       />
     );

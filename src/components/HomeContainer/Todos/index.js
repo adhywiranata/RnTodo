@@ -21,7 +21,7 @@ class Todos extends Component {
     this.state = {
       todos: [],
       loading: 'Loading',
-      activeTodoId: 2,
+      activeTodoId: 0,
     };
     this.completeTask = this.completeTask.bind(this);
     this.selectTask = this.selectTask.bind(this);

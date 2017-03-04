@@ -9,7 +9,10 @@ import {
 const Header = props => (
   <View style={styles.header}>
     <Text style={styles.headerText}>BORING TODOS</Text>
-    <TouchableHighlight style={styles.logoutButton} onPress={props.logout}>
+    <TouchableHighlight
+      underlayColor='#96281B'
+      style={styles.logoutButton}
+      onPress={props.logout}>
       <Text style={styles.logoutButtonText}>Logout</Text>
     </TouchableHighlight>
   </View>
