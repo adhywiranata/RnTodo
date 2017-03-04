@@ -4,31 +4,47 @@ import {
 } from 'react-native';
 
 import LoginContainer from './components/auth/LoginContainer'
+import RegisterContainer from './components/auth/RegisterContainer'
 
 class App extends Component {
 
+  constructor() {
+    super();
+    this.goToRegister = this.goToRegister.bind(this);
+  }
+
   renderScene(route, navigator) {
-    if(route.name === 'Login') {
-      return (
-        <LoginContainer
-          navigator={navigator}
-          goToRegister={() => {
-            navigator.push({
-              name: 'Login',
-              title: 'Login'
-            });
-          }}
-          {...route.passProps}
-        />
-      );
+    switch(route.name) {
+      case 'Login':
+        return (
+          <LoginContainer
+            navigator={navigator}
+            goToRegister={() => {
+              navigator.push({
+                name: 'Register',
+                title: 'Register'
+              })
+            }}
+            {...route.passProps}
+          />
+        );
+      case 'Register':
+        return (
+          <RegisterContainer
+            navigator={navigator}
+            goToLogin={() => {
+              navigator.pop()
+            }}
+            {...route.passProps}
+          />
+        );
+      default:
+        return (<View><Text>404</Text></View>)
     }
   }
 
   goToRegister(navigator) {
-    navigator.push({
-      name: 'Login',
-      title: 'Login'
-    });
+
   }
 
   render() {
