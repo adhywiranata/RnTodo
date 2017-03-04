@@ -50,14 +50,16 @@ class Todos extends Component {
     }, 2000);
   }
 
-  completeTask() {
+  completeTask(todoId) {
     let currTodos = [...this.state.todos];
-    currTodos.pop();
+    const currTodosId = currTodos.map(todo => todo.id);
+    const deletedTodoId = currTodosId.indexOf(todoId);
+    currTodos.splice(deletedTodoId, 1);
     this.setState({
       todos: currTodos,
     });
   }
-  
+
   render() {
     return (
       <ScrollView>
