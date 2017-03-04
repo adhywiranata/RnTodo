@@ -10,7 +10,7 @@ class HomeContainer extends Component {
   render() {
     return (
       <View>
-        <Header />
+        <Header logout={this.props.goToLogin} />
         <Todos />
       </View>
     )

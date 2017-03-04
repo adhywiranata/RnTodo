@@ -46,6 +46,9 @@ class App extends Component {
         return (
           <HomeContainer
             navigator={navigator}
+            goToLogin={() => {
+              navigator.pop();
+            }}
             {...route.passProps}
           />
         );
