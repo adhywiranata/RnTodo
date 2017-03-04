@@ -2,18 +2,20 @@ import React from 'react';
 import {
   StyleSheet,
   View,
-  Text,
+  TextInput,
   Image,
   TouchableHighlight,
 } from 'react-native';
 
 import checkImage from './success.png';
+import trashImage from './delete.png';
 
-const TodoItem = props => (
+const ActiveTodoItem = props => (
   <View style={styles.todoItem}>
-    <TouchableHighlight onPress={() => props.selectTask(props.id)} style={styles.todoItemTask}>
-      <Text style={styles.todoItemTaskText}>{props.todoTask}</Text>
+    <TouchableHighlight style={styles.trashImageButton}>
+      <Image source={trashImage} style={styles.trashImage} />
     </TouchableHighlight>
+    <TextInput style={styles.todoItemTaskInput} defaultValue={props.todoTask} />
     <TouchableHighlight onPress={() => props.completeTask(props.id)} style={styles.checkImageButton}>
       <Image source={checkImage} style={styles.checkImage} />
     </TouchableHighlight>
@@ -22,27 +24,26 @@ const TodoItem = props => (
 
 const styles = StyleSheet.create({
   todoItem: {
-    height: 90,
-    padding: 0,
+    height: 100,
+    padding: 20,
+    marginTop: 10,
+    backgroundColor: '#F0F0F0',
     borderTopWidth: 1,
     borderTopColor: '#rgba(0, 0, 0, 0.1)',
     borderBottomWidth: 3,
     borderBottomColor: 'rgba(0, 0, 0, 0.1)',
-    marginTop: 10,
-    backgroundColor: '#FFF',
+    flex: 1,
+    flexDirection: 'row',
   },
-  todoItemTask: {
-    padding: 30,
-    backgroundColor: '#FFF'
-  },
-  todoItemTaskText: {
-    color: '#333333',
+  todoItemTaskInput: {
+    color: '#333',
     fontSize: 18,
+    width: '60%',
   },
   checkImageButton: {
     position: 'absolute',
     right: 20,
-    top: 10,
+    top: 20,
     width: 60,
     height: 60,
     padding: 0,
@@ -50,7 +51,18 @@ const styles = StyleSheet.create({
   checkImage: {
     width: 60,
     height: 60,
+  },
+  trashImageButton: {
+    width: 50,
+    height: 50,
+    padding: 0,
+    marginLeft: 0,
+    marginRight: 10,
+  },
+  trashImage: {
+    width: 50,
+    height: 50,
   }
 });
 
-export default TodoItem;
+export default ActiveTodoItem;

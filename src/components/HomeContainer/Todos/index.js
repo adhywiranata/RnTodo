@@ -8,8 +8,11 @@ import {
 } from 'react-native';
 
 import TodoItem from './TodoItem';
+import ActiveTodoItem from './ActiveTodoItem';
+
 import loadingGif from './rolling.gif';
 import logo from './checked.png';
+import trash from './trash.png';
 
 class Todos extends Component {
 
@@ -18,8 +21,10 @@ class Todos extends Component {
     this.state = {
       todos: [],
       loading: 'Loading',
+      activeTodoId: 2,
     };
     this.completeTask = this.completeTask.bind(this);
+    this.selectTask = this.selectTask.bind(this);
   }
 
   componentDidMount() {
@@ -47,7 +52,13 @@ class Todos extends Component {
           { id: 13, todoTask: 'Learn Laravel', completed: false },
         ],
       });
-    }, 3000);
+    }, 1000);
+  }
+
+  selectTask(todoId) {
+    this.setState({
+      activeTodoId: todoId
+    });
   }
 
   completeTask(todoId) {
@@ -70,15 +81,22 @@ class Todos extends Component {
             </View>
           )
           : true }
+
         {
           this.state.todos
             .filter(todo => !todo.completed)
-            .map(todo =>
-              <TodoItem
-                key={todo.id}
-                completeTask={this.completeTask}
-                {...todo}
-              />
+            .map(todo => todo.id !== this.state.activeTodoId ?
+                <TodoItem
+                  key={todo.id}
+                  selectTask={this.selectTask}
+                  completeTask={this.completeTask}
+                  {...todo}
+                /> :
+                <ActiveTodoItem
+                  key={todo.id}
+                  completeTask={this.completeTask}
+                  {...todo}
+                />
             )
         }
       </ScrollView>
