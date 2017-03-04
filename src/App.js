@@ -3,15 +3,12 @@ import {
   Navigator
 } from 'react-native';
 
-import LoginContainer from './components/auth/LoginContainer'
-import RegisterContainer from './components/auth/RegisterContainer'
+import {
+  LoginContainer,
+  RegisterContainer
+} from './components/Auth'
 
 class App extends Component {
-
-  constructor() {
-    super();
-    this.goToRegister = this.goToRegister.bind(this);
-  }
 
   renderScene(route, navigator) {
     switch(route.name) {
@@ -43,18 +40,12 @@ class App extends Component {
     }
   }
 
-  goToRegister(navigator) {
-
-  }
-
   render() {
     return (
       <Navigator
         initialRoute={{ name: 'Login', title: 'Login' }}
         renderScene={ this.renderScene }
-      >
-
-      </Navigator>
+      />
     );
   }
 }
