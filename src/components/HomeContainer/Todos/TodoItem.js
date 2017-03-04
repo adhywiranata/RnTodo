@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   },
   todoItemTask: {
     color: '#333333',
+    fontSize: 18,
   }
 });
 
