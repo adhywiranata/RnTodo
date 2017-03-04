@@ -6,7 +6,8 @@ import {
 import {
   LoginContainer,
   RegisterContainer
-} from './components/AuthContainer'
+} from './components/AuthContainer';
+import HomeContainer from './components/HomeContainer';
 
 class App extends Component {
 
@@ -16,6 +17,12 @@ class App extends Component {
         return (
           <LoginContainer
             navigator={navigator}
+            goToHome={() => {
+              navigator.push({
+                name: 'Home',
+                title: 'Home',
+              });
+            }}
             goToRegister={() => {
               navigator.push({
                 name: 'Register',
@@ -32,6 +39,13 @@ class App extends Component {
             goToLogin={() => {
               navigator.pop()
             }}
+            {...route.passProps}
+          />
+        );
+      case 'Home':
+        return (
+          <HomeContainer
+            navigator={navigator}
             {...route.passProps}
           />
         );

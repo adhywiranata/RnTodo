@@ -16,9 +16,11 @@ const LoginContainer = props => (
     <Image source={logo} style={styles.logo} />
     <Text style={styles.welcome}>RN Boring ToDo</Text>
     <View>
-      <TextInput placeholder="Boring username" placeholderTextColor="#DDD" style={styles.loginForm} underlineColorAndroid="transparent"/>
-      <TextInput placeholder="Boring password" placeholderTextColor="#DDD" secureTextEntry={true} style={styles.loginForm}/>
-      <TouchableHighlight style={styles.loginButton}>
+      <TextInput placeholder="Boring username" placeholderTextColor="#DDD" style={styles.loginForm} underlineColorAndroid="transparent" />
+      <TextInput placeholder="Boring password" placeholderTextColor="#DDD" secureTextEntry={true} style={styles.loginForm} />
+      <TouchableHighlight
+        onPress={props.goToHome}
+        style={styles.loginButton}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableHighlight>
       <TouchableHighlight
