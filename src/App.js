@@ -12,10 +12,23 @@ class App extends Component {
       return (
         <LoginContainer
           navigator={navigator}
+          goToRegister={() => {
+            navigator.push({
+              name: 'Login',
+              title: 'Login'
+            });
+          }}
           {...route.passProps}
         />
       );
     }
+  }
+
+  goToRegister(navigator) {
+    navigator.push({
+      name: 'Login',
+      title: 'Login'
+    });
   }
 
   render() {

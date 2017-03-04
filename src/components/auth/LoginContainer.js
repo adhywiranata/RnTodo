@@ -11,7 +11,7 @@ import {
 
 import logo from './checked.png';
 
-const LoginContainer = () => (
+const LoginContainer = props => (
   <View style={styles.container}>
     <Image source={logo} style={styles.logo} />
     <Text style={styles.welcome}>RN Boring ToDo</Text>
@@ -21,7 +21,9 @@ const LoginContainer = () => (
       <TouchableHighlight style={styles.loginButton}>
         <Text style={styles.loginButtonText}>Login</Text>
       </TouchableHighlight>
-      <TouchableHighlight style={styles.toRegisterLink}>
+      <TouchableHighlight
+        onPress={props.goToRegister}
+        style={styles.toRegisterLink}>
         <Text style={styles.toRegisterLinkText}>Don't Have an Account?</Text>
       </TouchableHighlight>
     </View>
