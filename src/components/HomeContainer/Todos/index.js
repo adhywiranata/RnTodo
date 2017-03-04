@@ -25,6 +25,7 @@ class Todos extends Component {
     };
     this.completeTask = this.completeTask.bind(this);
     this.selectTask = this.selectTask.bind(this);
+    this.updateTask = this.updateTask.bind(this);
   }
 
   componentDidMount() {
@@ -71,6 +72,16 @@ class Todos extends Component {
     });
   }
 
+  updateTask(todoId, todoTask) {
+    let currTodos = [...this.state.todos];
+    const currTodosId = currTodos.map(todo => todo.id);
+    const updatedTodoId = currTodosId.indexOf(todoId);
+    currTodos[updatedTodoId].todoTask = todoTask;
+    this.setState({
+      todos: currTodos,
+    })
+  }
+
   render() {
     return (
       <ScrollView style={styles.container}>
@@ -94,6 +105,7 @@ class Todos extends Component {
                 /> :
                 <ActiveTodoItem
                   key={todo.id}
+                  updateTask={this.updateTask}
                   completeTask={this.completeTask}
                   {...todo}
                 />

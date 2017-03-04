@@ -15,7 +15,10 @@ const ActiveTodoItem = props => (
     <TouchableHighlight style={styles.trashImageButton}>
       <Image source={trashImage} style={styles.trashImage} />
     </TouchableHighlight>
-    <TextInput style={styles.todoItemTaskInput} defaultValue={props.todoTask} />
+    <TextInput
+      style={styles.todoItemTaskInput}
+      onEndEditing={(e) => props.updateTask(props.id, e.nativeEvent.text)}
+      defaultValue={props.todoTask} />
     <TouchableHighlight onPress={() => props.completeTask(props.id)} style={styles.checkImageButton}>
       <Image source={checkImage} style={styles.checkImage} />
     </TouchableHighlight>
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
   },
   todoItemTaskInput: {
     color: '#333',
-    fontSize: 18,
+    fontSize: 15,
     width: '60%',
   },
   checkImageButton: {

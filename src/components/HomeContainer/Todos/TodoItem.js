@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   todoItemTaskText: {
     color: '#333333',
-    fontSize: 18,
+    fontSize: 15,
   },
   checkImageButton: {
     position: 'absolute',
